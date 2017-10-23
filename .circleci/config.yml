@@ -14,22 +14,42 @@ jobs:
      docker:
        - image: circleci/python:2.7
      steps:
-       - checkout
-       - run:
+        - checkout
+        - run: mkdir test-reports
+        - restore_cache:
+            keys:
+              - deps1-{{ .Branch }}-{{ checksum "requirements_test.txt" }}
+              - deps1-
+        - run:
             name: Dependencies installation
             command: |
+              python -m virtualenv venv
+              . venv/bin/activate
               make install-test
               make install-dev
-       - run:
+        - save_cache:
+            key: deps1-{{ .Branch }}-{{ checksum "requirements_test.txt" }}
+            paths:
+              - "venv"
+        - run:
             name: Python code style check
-            command: make quality-py
-       - run:
+            command: |
+              . venv/bin/activate
+              make quality-py
+        - run:
             name: Javascript code style check
             command: make quality-js
-       - run:
+        - run:
             name: Python unit testing
-            command: make test-py
-       - run:
+            command: |
+              . venv/bin/activate
+              make test-py
+        - run:
             name: Javascript unit testing
             command: make test-js
+        - store_artifacts:
+            path: test-reports/
+            destination: tr1
+        - store_test_results:
+            path: test-reports/
 
