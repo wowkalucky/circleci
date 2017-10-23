@@ -10,6 +10,10 @@ jobs:
        - image: circleci/python:2.7
      steps:
        - checkout
-       - run: echo "hello world"
-       - run: make help
+       - run:
+            name: Greeting
+            command: echo "hello world"
+       - run:
+            name: Print make help
+            command: make help
 
