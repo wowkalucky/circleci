@@ -1,6 +1,6 @@
 import unittest
 
-from circleci.python_package.python_code import add_it
+from python_package.python_code import add_it
 
 
 class PackageTest(unittest.TestCase):
