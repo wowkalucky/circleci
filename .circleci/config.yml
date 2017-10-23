@@ -5,9 +5,8 @@
 version: 2
 
 dependencies:
-  override:
-    - make install-dev
-    - make install-test
+  pre:
+    - npm install -g npm
 
 jobs:
    build:
