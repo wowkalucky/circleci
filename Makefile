@@ -38,6 +38,13 @@ install-test: ## Install dependencies required to run tests
 	@echo [re]installing javascript testing requirements...
 	-npm install
 
+install-tools: ## Install required packages
+	@echo installing base tools...
+	curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -
+	sudo apt-get install nodejs
+	node -v
+	npm -v
+
 
 #coverage-unit: ## Send unit tests coverage reports to coverage sevice
 #	bash <(curl -s https://codecov.io/bash) -cF unit

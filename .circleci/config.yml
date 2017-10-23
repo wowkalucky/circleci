@@ -4,10 +4,6 @@
 
 version: 2
 
-dependencies:
-  pre:
-    - npm install -g npm
-
 jobs:
    build:
      docker:
@@ -19,6 +15,9 @@ jobs:
             keys:
               - deps1-{{ .Branch }}-{{ checksum "requirements_test.txt" }}
               - deps1-
+        - run:
+            name: Basic tools installation
+            command: make install-tools
         - run:
             name: Dependencies installation
             command: |
