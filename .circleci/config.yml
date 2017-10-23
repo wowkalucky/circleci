@@ -4,12 +4,22 @@
 
 version: 2
 
+dependencies:
+  override:
+    - make install-dev
+    - make install-test
+
 jobs:
    build:
      docker:
        - image: circleci/python:2.7
      steps:
        - checkout
+       - run:
+            name: Dependencies installation
+            command: |
+              make install-dev
+              make install-test
        - run:
             name: Python code style check
             command: make quality-py
