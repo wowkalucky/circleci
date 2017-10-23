@@ -11,9 +11,15 @@ jobs:
      steps:
        - checkout
        - run:
-            name: Greeting
-            command: echo "hello world"
+            name: Python code style check
+            command: make quality-py
        - run:
-            name: Print make help
-            command: make help
+            name: Javascript code style check
+            command: make quality-js
+       - run:
+            name: Python unit testing
+            command: make test-py
+       - run:
+            name: Javascript unit testing
+            command: make test-js
 
