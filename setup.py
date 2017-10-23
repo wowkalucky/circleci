@@ -38,7 +38,7 @@ setup(
         'xblock-utils==1.0.5',
     ],
     dependency_links=[
-        'git+https://github.com/edx/xblock-utils.git@v1.0.3#egg=xblock-utils-1.0.5',
+        'git+https://github.com/edx/xblock-utils.git@v1.0.5#egg=xblock-utils-1.0.5',
     ],
     entry_points={
         'xblock.v1': [
