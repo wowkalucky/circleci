@@ -38,7 +38,9 @@ jobs:
               make quality-py
         - run:
             name: Javascript code style check
-            command: make quality-js
+            command: |
+              . venv/bin/activate
+              make quality-js
         - run:
             name: Python unit testing
             command: |
