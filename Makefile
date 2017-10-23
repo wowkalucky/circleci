@@ -11,7 +11,7 @@ quality: quality-py quality-js ## Run code quality checks [py, js]
 
 quality-py:
 	@echo Checking python code style...
-	flake8
+	python2.7 -m flake8 python_package
 
 quality-js:
 	@echo Checking javascript code style...
