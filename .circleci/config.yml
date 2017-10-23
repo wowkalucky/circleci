@@ -18,8 +18,8 @@ jobs:
        - run:
             name: Dependencies installation
             command: |
-              make install-dev
               make install-test
+              make install-dev
        - run:
             name: Python code style check
             command: make quality-py
